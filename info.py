@@ -15,7 +15,7 @@ def is_enabled(value, default):
 #main variables
 API_ID = int(environ.get('API_ID', '21942125'))
 API_HASH = environ.get('API_HASH', '3daf41670bf9ee8030e786aed791f15ffb7eb104')
-BOT_TOKEN = environ.get('BOT_TOKEN', '6793:AAHCTNk2dQyXw5DrvxTnNBAEbHxWZOVih30')
+BOT_TOKEN = environ.get('BOT_TOKEN', '7327746577:AAE-39m-iE1CCViwrvOvnOe8pj7a-Fzs7_4')
 
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6331847574').split()]
 USERNAME = environ.get('USERNAME', "https://telegram.me/ROCKERSBACKUP")
@@ -53,7 +53,7 @@ YEARS = [f'{i}' for i in range(2024 , 2002,-1 )]
 SEASONS = [f'season {i}'for i in range (1 , 23)]
 REF_PREMIUM = 30
 PREMIUM_POINT = 1500
-auth_channel = environ.get('AUTH_CHANNEL', '-1001802232305')
+auth_channel = environ.get('AUTH_CHANNEL', '-1001910410959')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1001816697837'))
 request_channel = environ.get('REQUEST_CHANNEL', '-1001557802343')
