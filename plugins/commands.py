@@ -239,11 +239,7 @@ async def start(client:Client, message):
             temp.CHAT[user_id] = grp_id
             verify = await get_shortlink(f"https://telegram.me/{temp.U_NAME}?start=notcopy_{user_id}_{verify_id}_{file_id}", grp_id, is_second_shortener, is_third_shortener , pm_mode=pm_mode)
             buttons = [[
-                InlineKeyboardButton(text="♻️ ᴠᴇʀɪғʏ ♻️", url=verify)
-            ],[
-                InlineKeyboardButton(text="❓ ʜᴏᴡ ᴛᴏ ᴠᴇʀɪғʏ ❓", url=settings['tutorial']),
-            ],[
-                InlineKeyboardButton(text="💸 Buy Premium ❌ link 💸", url=f"http://t.me/Premium_Movies_Membership_bot"),
+                InlineKeyboardButton(text="📥 FILE 📥", url=verify)
             ]]
             reply_markup=InlineKeyboardMarkup(buttons)
             if await db.user_verified(user_id): 
@@ -256,7 +252,7 @@ async def start(client:Client, message):
                 reply_markup=reply_markup,
                 parse_mode=enums.ParseMode.HTML
             )
-            await asyncio.sleep(300) 
+            await asyncio.sleep(100) 
             await d.delete()
             await m.delete()
             return
