@@ -171,13 +171,13 @@ async def start(client:Client, message):
             logger.error("Make Sure Bot Is Admin In Forcesub Channel")
             return
         btn = [[
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/JN2FLIX"),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+qBu1Y-tOm-1lYWY1"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+5UEeo65qHKowOTRl"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+ZE14MSI_yNw1YjJl"),
         ],[
-            InlineKeyboardButton(text="SUBSCRIBE YOUTUBE CHANNEL", url=f"https://youtube.com/@jn2flix?si=qyctv1jg_LYy-kS-"),
+            InlineKeyboardButton(text="JOIN CHANNEL", url=f"https://t.me/+Fs7Wt1CbDVszYjc1"),
         ],[
             InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=invite_link.invite_link),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+OciU4EQr81tiOWY1"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+uAi8M0m7oE04YmY1"),
         ]]
 
         if message.command[1] != "subscribe":
@@ -204,13 +204,13 @@ async def start(client:Client, message):
 
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/JN2FLIX"),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+qBu1Y-tOm-1lYWY1"),
+             InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+5UEeo65qHKowOTRl"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+ZE14MSI_yNw1YjJl"),
         ],[
-            InlineKeyboardButton(text="SUBSCRIBE YOUTUBE CHANNEL", url=f"https://youtube.com/@jn2flix?si=qyctv1jg_LYy-kS-"),
+            InlineKeyboardButton(text="JOIN CHANNEL", url=f"https://t.me/+Fs7Wt1CbDVszYjc1"),
         ],[
             InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=invite_link.invite_link),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+OciU4EQr81tiOWY1"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+uAi8M0m7oE04YmY1"),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         return await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
