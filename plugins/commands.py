@@ -107,11 +107,10 @@ async def start(client:Client, message):
             InlineKeyboardButton("‼️ ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴇᴛ ꜰɪʟᴇ ‼️", url=f"https://telegram.me/{temp.U_NAME}?start=file_{grp_id}_{file_id}"),
         ]]
         reply_markup=InlineKeyboardMarkup(btn)
-        await m.reply_photo(
-            photo=(VERIFY_IMG),
-            caption=msg.format(message.from_user.mention, get_readable_time(TWO_VERIFY_GAP)),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
+        await m.reply(
+             text=msg.format(message.from_user.mention, get_readable_time(TWO_VERIFY_GAP)),
+             reply_markup=reply_markup,
+             parse_mode=enums.ParseMode.HTML
         )
         return 
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
@@ -142,7 +141,7 @@ async def start(client:Client, message):
                             InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'https://t.me/JN2FLIX')
                             ]]
                         reply_markup = InlineKeyboardMarkup(buttons)
-                        await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
+                        await message.reply(text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
                             reply_markup=reply_markup,
                             parse_mode=enums.ParseMode.HTML)
                 try: 
@@ -159,7 +158,7 @@ async def start(client:Client, message):
                             InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'https://t.me/JN2FLIX')
                             ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
+        await message.reply(text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -196,7 +195,7 @@ async def start(client:Client, message):
                 )
         await client.send_message(
             chat_id=message.from_user.id,
-            text="<b>👇 First Join below 4 channel and subscribe my youtube channel\n\nthen U get direct📥 File no ❌ shortner</b>",
+            text="<b>👇 First Join below 5 channel and subscribe my youtube channel\nhttps://youtube.com/@jn2flix?si=zCEiFUhWGHCmvOB1\n\nthen U get direct📥 File no ❌ shortner</b>",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode=enums.ParseMode.HTML
         )
@@ -213,7 +212,7 @@ async def start(client:Client, message):
             InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+uAi8M0m7oE04YmY1"),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        return await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
+        return await message.reply(text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
