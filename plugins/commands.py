@@ -139,6 +139,8 @@ async def start(client:Client, message):
                 if AUTH_CHANNEL and await is_req_subscribed(client, message):
                         buttons = [[
                             InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'https://t.me/JN2FLIX')
+                            ],[
+                            InlineKeyboardButton('🍿 MORE BOTS 🍿', url=f'http://t.me/ROCKERSBACKUP')
                             ]]
                         reply_markup = InlineKeyboardMarkup(buttons)
                         await message.reply(text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
@@ -156,6 +158,8 @@ async def start(client:Client, message):
     if len(message.command) != 2:
         buttons = [[
                             InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'https://t.me/JN2FLIX')
+                  ],[
+                            InlineKeyboardButton('🍿 MORE BOTS 🍿', url=f'http://t.me/ROCKERSBACKUP')
                             ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply(text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
