@@ -1,12 +1,10 @@
 class script(object):
     START_TXT = """<b> hi {} {},
     
-<blockquote>ɪᴍ ᴛʜᴇ ᴍᴏsᴛ ᴀᴅᴠᴀɴᴄᴇ ᴀɪ ᴘᴏᴡᴇʀᴅ 🤖 ᴀᴜᴛᴏ ғɪʟᴛᴇʀ ʙᴏᴛ..
-sᴇɴᴅ ᴍᴇ ᴀɴʏ ᴍᴏᴠɪᴇ ᴏʀ sᴇʀɪᴇs ɴᴀᴍᴇ ᴀɴᴅ sᴇᴇ ᴍʏ ᴍᴀɢɪᴄ..✨</blockquote>
-<blockquote>ғᴏʀ ᴍᴏʀᴇ ᴅᴇᴛᴀɪʟs ᴜsᴇ ᴛʜᴇ ʙᴜᴛᴛᴏɴs ʙᴇʟᴏᴡ 🤞🏻</blockquote>
+<blockquote> I AM Movie File Search Bot 
 
-ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href='https://telegram.me/ROCKERSBACKUP'>🍿 ROCKERSBACKUP 🍿</a>
-movies uploding ʙʏ : <a href='https://telegram.me/JN2FLIX'>🍿 JN2FLIX 🍿</a>
+Just send ur movie are webseries correct name
+I will send direct downlodable File</blockquote>
 </b>"""
     
     HELP_TXT = """<b>ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴅᴏᴄᴜᴍᴇɴᴛᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴍᴏᴅᴜʟᴇꜱ..</b>"""
@@ -106,7 +104,10 @@ User - {}"""
 ❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>
 """
 
-    FILE_CAPTION = """<a href='https://t.me/JN2FLIX'><b>ɴᴀᴍᴇ : {file_name}</b></a>"""
+    FILE_CAPTION = """📕 File Name: {filename}
+💾 Size: {filesize} ⏰ Duration: {duration}
+
+adult video t.me/+szZRZd2tif9hYTI1"""
 
     RESTART_TXT = """<b>
 📅 Dᴀᴛᴇ : <code>{}</code>
