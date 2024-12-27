@@ -104,7 +104,7 @@ User - {}"""
 ❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>
 """
 
-    CAPTION = "File Name: {file_name}, File Size: {file_size}, File Caption: {file_caption}"
+    FILE_CAPTION = "File Name: {file_name}, File Size: {file_size}"
 
     RESTART_TXT = """<b>
 📅 Dᴀᴛᴇ : <code>{}</code>
