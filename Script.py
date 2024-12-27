@@ -104,10 +104,7 @@ User - {}"""
 ❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>
 """
 
-    FILE_CAPTION = """📕 File Name: {filename}
-💾 Size: {filesize} ⏰ Duration: {duration}
-
-adult video t.me/+szZRZd2tif9hYTI1"""
+    FILE_CAPTION = """<a href='https://t.me/JN2FLIX'><b>ɴᴀᴍᴇ : {file_name}</b></a>"""
 
     RESTART_TXT = """<b>
 📅 Dᴀᴛᴇ : <code>{}</code>
