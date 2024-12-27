@@ -17,7 +17,7 @@ API_ID = int(environ.get('API_ID', '21942125'))
 API_HASH = environ.get('API_HASH', '6d412af77ce89f5bb1ed8971589d61b5')
 BOT_TOKEN = environ.get('BOT_TOKEN', '7327746577:AAE-39m-iE1CCViwrvOvnOe8pj7a-Fzs7_4')
 
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6331847574').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6643562770').split()]
 USERNAME = environ.get('USERNAME', "https://telegram.me/ROCKERSBACKUP")
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001557802343'))
 MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', 'https://t.me/+RowdIa84tBg1MDI1')
