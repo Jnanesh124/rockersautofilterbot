@@ -104,7 +104,7 @@ User - {}"""
 ❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>
 """
 
-    FILE_CAPTION = """<a href='https://t.me/JN2FLIX'><b>ɴᴀᴍᴇ : {file_name}</b></a>"""
+    CAPTION = "File Name: {file_name}, File Size: {file_size}, File Caption: {file_caption}"
 
     RESTART_TXT = """<b>
 📅 Dᴀᴛᴇ : <code>{}</code>
