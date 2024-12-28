@@ -1,11 +1,9 @@
-import requests
-from bs4 import BeautifulSoup
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from info import CHANNELS, MOVIE_UPDATE_CHANNEL, ADMINS
 from database.ia_filterdb import save_file, unpack_new_file_id
 from utils import get_poster, temp, formate_file_name
-from urllib.parse import quote
+from urllib.parse import quote  # Correctly import 'quote'
 import re
 from Script import script
 from database.users_chats_db import db
@@ -60,36 +58,29 @@ def clean_movie_name(file_name: str) -> str:
 
     return file_name
 
-async def get_movie_image_from_google(query):
-    search_url = f"https://www.google.com/search?hl=en&tbm=isch&q={query}"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-    }
-    try:
-        response = requests.get(search_url, headers=headers)
-        response.raise_for_status()
-
-        soup = BeautifulSoup(response.text, "html.parser")
-        img_tags = soup.find_all("img")
-
-        # Skip the first image (it's usually Google's logo) and return the second image URL
-        for img_tag in img_tags[1:]:
-            img_url = img_tag.get("src")
-            if img_url and img_url.startswith("http"):
-                return img_url
-    except Exception as e:
-        print(f"Error fetching image from Google: {e}")
-        return None
-
 async def get_imdb(file_name, post_mode):
     cleaned_name = clean_movie_name(file_name)
     imdb_file_name = name_format(cleaned_name)
-    poster_url = await get_movie_image_from_google(imdb_file_name)  # Always fetch image from Google
+    imdb = await get_poster(imdb_file_name)
     file_name_display = f'File Name : <code>{formate_file_name(cleaned_name)}</code>' if post_mode.get('singel_post_mode', True) else ''
-    
-    # Fallback caption if IMDb details are not available
-    caption = f"🎬 Movie: {cleaned_name}\n\n{file_name_display}" if poster_url else None
-    return cleaned_name, poster_url, caption
+    if imdb:
+        # Ensure all keys are present in the IMDb dictionary
+        title = imdb.get('title', 'Unknown Title')
+        rating = imdb.get('rating', 'N/A')
+        genres = imdb.get('genres', 'N/A')
+        description = imdb.get('plot', 'No description available.')
+        year = imdb.get('year', 'Unknown Year')  # Add default for 'year'
+
+        caption = script.MOVIES_UPDATE_TXT.format(
+            title=cleaned_name,  # Add cleaned name to the title
+            rating=rating,
+            genres=genres,
+            description=description,
+            year=year,  # Include the year key
+            file_name=file_name_display
+        )
+        return title, imdb.get('poster'), caption
+    return None, None, None
 
 async def send_movie_updates(bot, file_name, file_id, post_mode):
     imdb_title, poster_url, caption = await get_imdb(file_name, post_mode)
