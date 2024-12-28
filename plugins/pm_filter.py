@@ -85,7 +85,7 @@ async def group_search(client, message):
                return
            await message.delete()
            reply_message = await message.reply("<b>sᴇɴᴅɪɴɢ ʟɪɴᴋ ɪsɴ'ᴛ ᴀʟʟᴏᴡᴇᴅ ʜᴇʀᴇ ❌🤞🏻</b>")
-           await asyncio.sleep(60)
+           await asyncio.sleep(10)
            await reply_message.delete()
 
         elif '@admin' in message.text.lower() or '@admins' in message.text.lower():
@@ -156,7 +156,7 @@ async def next_page(bot, query):
     settings = await get_settings(query.message.chat.id)
     reqnxt  = query.from_user.id if query.from_user else 0
     temp.CHAT[query.from_user.id] = query.message.chat.id
-    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/ROCKERSBACKUP</blockquote></b>" if settings["auto_delete"] else ''
+    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/JN2FLIX</blockquote></b>" if settings["auto_delete"] else ''
     links = ""
     if settings["link"]:
         btn = []
@@ -276,7 +276,7 @@ async def season_search(client: Client, query: CallbackQuery):
     reqnxt = query.from_user.id if query.from_user else 0
     settings = await get_settings(query.message.chat.id)
     temp.CHAT[query.from_user.id] = query.message.chat.id
-    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/ROCKERSBACKUP</blockquote></b>" if settings["auto_delete"] else ''
+    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/JN2FLIX</blockquote></b>" if settings["auto_delete"] else ''
     links = ""
     if settings["link"]:
         btn = []
@@ -371,7 +371,7 @@ async def year_search(client: Client, query: CallbackQuery):
     reqnxt = query.from_user.id if query.from_user else 0
     settings = await get_settings(query.message.chat.id)
     temp.CHAT[query.from_user.id] = query.message.chat.id
-    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/ROCKERSBACKUP</blockquote></b>" if settings["auto_delete"] else ''
+    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/JN2FLIX</blockquote></b>" if settings["auto_delete"] else ''
     links = ""
     if settings["link"]:
         btn = []
@@ -463,7 +463,7 @@ async def quality_search(client: Client, query: CallbackQuery):
     reqnxt = query.from_user.id if query.from_user else 0
     settings = await get_settings(query.message.chat.id)
     temp.CHAT[query.from_user.id] = query.message.chat.id
-    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/ROCKERSBACKUP</blockquote></b>" if settings["auto_delete"] else ''
+    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/JN2FLIX</blockquote></b>" if settings["auto_delete"] else ''
     links = ""
     if settings["link"]:
         btn = []
@@ -562,7 +562,7 @@ async def lang_search(client: Client, query: CallbackQuery):
     settings = await get_settings(query.message.chat.id)
     group_id = query.message.chat.id
     temp.CHAT[query.from_user.id] = query.message.chat.id
-    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/ROCKERSBACKUP</blockquote></b>" if settings["auto_delete"] else ''
+    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/JN2FLIX</blockquote></b>" if settings["auto_delete"] else ''
     links = ""
     if settings["link"]:
         btn = []
@@ -742,11 +742,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
   
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'http://t.me/ROCKERSBACKUP')
-	],[
-            InlineKeyboardButton('🔞 ADULT CHANNEL 🔞', url=f'https://t.me/+y4Yfxe221o5iZjQ9')
-        ],[
-            InlineKeyboardButton('📡 OTT MOVIES AND GROUP 📡', url=f'https://t.me/+MkmB-unfQk02YTU1')
+            InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'http://t.me/JN2FLIX')
         ]]    
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -1267,7 +1263,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
     batch_link = f"batchfiles#{message.chat.id}#{message.id}#{message.from_user.id}"
     temp.CHAT[message.from_user.id] = message.chat.id
     settings = await get_settings(message.chat.id , pm_mode=pm_mode)
-    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/ROCKERSBACKUP</blockquote></b>" if settings["auto_delete"] else ''
+    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/JN2FLIX</blockquote></b>" if settings["auto_delete"] else ''
     links = ""
     if settings["link"]:
         btn = []
@@ -1349,7 +1345,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
         )
     else:
         cap = f"<b><blockquote>⚪️ 𝐑𝐞𝐪𝐮𝐢𝐬𝐭𝐞𝐝 𝐌𝐨𝐯𝐢𝐞 :- {search} \n⚪️ 𝐫𝐞𝐪𝐮𝐢𝐬𝐭𝐞𝐝 𝐩𝐞𝐫𝐬𝐨𝐧 :- {message.from_user.mention} </blockquote></b>"
-    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/ROCKERSBACKUP</blockquote></b>" if settings["auto_delete"] else ''
+    del_msg = f"\n\n<b><blockquote>©️ UPLOAD BY :- t.me/JN2FLIX</blockquote></b>" if settings["auto_delete"] else ''
     CAP[key] = cap
     if imdb and imdb.get('poster'):
         try:
