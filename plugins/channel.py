@@ -95,7 +95,7 @@ async def send_movie_updates(bot, file_name, file_id, post_mode):
     btn = [
         [InlineKeyboardButton(
             '📥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐅𝐢𝐥𝐞 📥', 
-            url=f'tg://resolve?domain=JN2Flix_Movie_Searcher_Bot&text={formatted_name}'
+            url=f'tg://resolve?domain=Theater_Print_Movies_Search_bot&text={formatted_name}'
         )],
     ]
     reply_markup = InlineKeyboardMarkup(btn)
