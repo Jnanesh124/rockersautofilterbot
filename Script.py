@@ -211,12 +211,14 @@ Yᴏᴜʀ <ul>ᴘʀᴇᴍɪᴜᴍ ᴘʟᴀɴ</ul> ᴡɪʟʟ ʙᴇ ᴀᴄᴛɪᴠ
 
 #verified_{}_completed"""
 
-    MOVIES_UPDATE_TXT = """<b>🍿 NEW MOVIE 🍿
+   MOVIES_UPDATE_TXT = """<b>🍿 NEW MOVIE 🍿
 
 Title: {title}
 Rating: {rating}
 Genre: {genres}
 
+<b>🎥 JOIN @JN2FLIX FOR MORE UPDATES 🎥</b>
 
 {file_name}
 </b>"""
+
