@@ -19,7 +19,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', '7327746577:AAE-39m-iE1CCViwrvOvnOe8pj7a-Fz
 
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6643562770').split()]
 USERNAME = environ.get('USERNAME', "https://telegram.me/ROCKERSBACKUP")
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001557802343'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002082139065'))
 MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', 'https://t.me/+RowdIa84tBg1MDI1')
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002159172109').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://test:test@cluster0.ys8igld.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
