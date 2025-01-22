@@ -139,7 +139,7 @@ async def start(client:Client, message):
                 newPoint = await db.get_point(refUserId)
                 if AUTH_CHANNEL and await is_req_subscribed(client, message):
                         buttons = [[
-                            InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'https://t.me/JN2FLIX')
+                            InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'https://t.me/ROCKERSBACKUP')
                             ]]
                         reply_markup = InlineKeyboardMarkup(buttons)
                         await message.reply(text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
@@ -156,7 +156,7 @@ async def start(client:Client, message):
             pass
     if len(message.command) != 2:
         buttons = [[
-                            InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'https://t.me/JN2FLIX')
+                            InlineKeyboardButton('🍿 UPDATE CHANNEL 🍿', url=f'https://t.me/ROCKERSBACKUP')
                             ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply(text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
@@ -171,13 +171,14 @@ async def start(client:Client, message):
             logger.error("Make Sure Bot Is Admin In Forcesub Channel")
             return
         btn = [[
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+C-2vOYYDtl0wNmJl"),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+GAYLhCeRBKA4YTQ1"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+V2pe-jcQJ5gxYjY1"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+8fs4BVs1eo04MWE1"),
         ],[
-            InlineKeyboardButton(text="JOIN CHANNEL", url=f"https://t.me/+IolR3Ye7j4g2NGY9"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+JHML3OZKJtYzM2I1"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+hvHXgDbcQ70zMWZl"),
         ],[
             InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=invite_link.invite_link),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+mDoQEnDXsrU3YWJl"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+ejlq93G-0MFlN2E1"),
         ]]
 
         if message.command[1] != "subscribe":
@@ -196,7 +197,7 @@ async def start(client:Client, message):
                 )
         await client.send_message(
             chat_id=message.from_user.id,
-            text="<b>👇 First Join below 5 channel and subscribe my youtube channel\nhttps://youtube.com/@jn2flix?si=44LH_BHzBREhQpfS\n\nthen U get direct📥 File no ❌ shortner</b>",
+            text="<b>👇 First Join below 6 channel and subscribe my youtube channel\nhttps://youtube.com/@jn2flix?si=44LH_BHzBREhQpfS\n\nthen U get direct📥 File no ❌ shortner</b>",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode=enums.ParseMode.HTML
         )
@@ -204,13 +205,14 @@ async def start(client:Client, message):
 
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+C-2vOYYDtl0wNmJl"),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+GAYLhCeRBKA4YTQ1"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+V2pe-jcQJ5gxYjY1"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+8fs4BVs1eo04MWE1"),
         ],[
-            InlineKeyboardButton(text="JOIN CHANNEL", url=f"https://t.me/+IolR3Ye7j4g2NGY9"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+JHML3OZKJtYzM2I1"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+hvHXgDbcQ70zMWZl"),
         ],[
             InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=invite_link.invite_link),
-            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+mDoQEnDXsrU3YWJl"),
+            InlineKeyboardButton(text="ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/+ejlq93G-0MFlN2E1"),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         return await message.reply(text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
@@ -286,7 +288,7 @@ async def start(client:Client, message):
             files_to_delete.append(toDel)
 
         delCap = "<blockquote>File Will Delete After Some Time So Save </blockquote>"
-        afterDelCap = "<blockquote>Join @JN2FLIX </blockquote>"
+        afterDelCap = "<blockquote>Join @ROCKERSBACKUP </blockquote>"
         replyed = await message.reply(
             delCap
         )
@@ -324,7 +326,7 @@ async def start(client:Client, message):
         reply_markup=InlineKeyboardMarkup(btn)
     )
     delCap = "<blockquote> File Will Delete After Some Time So Save This File</blockquote>"
-    afterDelCap = "<blockquote>Join @JN2FLIX</blockquote>"
+    afterDelCap = "<blockquote>Join @ROCKERSBACKUP</blockquote>"
     replyed = await message.reply(
         delCap,
         reply_to_message_id= toDel.id)
