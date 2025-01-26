@@ -217,7 +217,6 @@ Yᴏᴜʀ <ul>ᴘʀᴇᴍɪᴜᴍ ᴘʟᴀɴ</ul> ᴡɪʟʟ ʙᴇ ᴀᴄᴛɪᴠ
     Rating: {rating}
     Genre: {genres}
 
-    <b>🎥 JOIN @JN2FLIX FOR MORE UPDATES 🎥</b>
 
     {file_name}
      </b>"""
