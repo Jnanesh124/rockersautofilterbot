@@ -935,7 +935,7 @@ async def auto_filter(client, msg, spoll=False, pm_mode=False):
     settings = await get_settings(chat_id, pm_mode=pm_mode)
 
     # Add searching query message
-    searching_msg = await msg.reply_text('<b>Searching for your query...</b>')
+    searching_msg = await msg.reply_text('<b>Searching for your {search}</b>')
 
     if not spoll:
         files, offset, total_results = await get_search_results(search)
@@ -1075,10 +1075,11 @@ async def auto_filter(client, msg, spoll=False, pm_mode=False):
             else:
                 await msg.reply_text(cap + links + del_msg, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
     else:
-        k = await msg.reply_text(text=cap + links + del_msg, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML, reply_to_message_id=msg.message_id)
+        k = await msg.reply_text(text=cap + links + del_msg, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML, reply_to_message_id=msg.id)
         if settings['auto_delete']:
             await asyncio.sleep(DELETE_TIME)
             await k.delete()
 
     await searching_msg.delete()
     return
+
