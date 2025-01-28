@@ -930,6 +930,7 @@ async def delSticker(sticker):
     except:
         pass
 async def auto_filter(client, msg, spoll=False, pm_mode=False):
+    search = msg.text  # This is where we capture the search query from the user
     st = ''
     try:
         # Instead of sending a sticker, now sending a text message
