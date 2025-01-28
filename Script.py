@@ -107,7 +107,8 @@ User - {}"""
     FILE_CAPTION = """📕 File Name: {filename}
 💾 Size: {filesize} 
 
-adult video https://t.me/+W1JYQ90av51mNWM1"""
+adult video https://t.me/+-uJZnBO06H8xZTY1
+new releasead movies https://t.me/+LboF2BceyP5hMDVl"""
 
     RESTART_TXT = """<b>
 📅 Dᴀᴛᴇ : <code>{}</code>
