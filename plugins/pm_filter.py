@@ -953,44 +953,41 @@ async def auto_filter(client, msg, spoll=False, pm_mode=False):
                     await ai_sts.delete()
                     await searching_msg.delete()
                     return await auto_filter(client, msg)  # Recursive call with corrected query
-                await ai_sts.edit('<b>No spelling suggestions found. Search failed.</b>')
-                await asyncio.sleep(2)
-                await ai_sts.delete()
-                await searching_msg.delete()
-                return await advantage_spell_chok(msg)
-            else:
-                await searching_msg.edit('<b>No results found for your query.</b>')
-                await asyncio.sleep(2)
-                await searching_msg.delete()
-                return
+                else:
+                    await ai_sts.edit('<b>No spelling suggestions found. Search failed.</b>')
+                    await asyncio.sleep(2)
+                    await ai_sts.delete()
+            await searching_msg.edit('<b>No results found for your query.</b>')
+            await asyncio.sleep(2)
+            await searching_msg.delete()
+            return
     else:
-        settings = await get_settings(msg.message.chat.id, pm_mode=pm_mode)
-        message = msg.message.reply_to_message  # msg will be callback query
         search, files, offset, total_results = spoll
 
     # Prepare result buttons
-    links = ""
     btn = []
-    if settings["link"]:
-        for file in files:
-            links += f"""<b>\n\n<a href=https://t.me/{temp.U_NAME}?start={"pm_mode_" if pm_mode else ''}file_{ADMINS[0] if pm_mode else msg.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('['), file.file_name.split()))}</a></b>"""
-    else:
-        btn = [
-            [InlineKeyboardButton(
+    max_btns = 10  # Max buttons per page
+    current_page = int(offset / max_btns) + 1 if offset else 1
+    total_pages = math.ceil(total_results / max_btns)
+
+    start = offset or 0
+    end = start + max_btns
+    for file in files[start:end]:
+        btn.append([
+            InlineKeyboardButton(
                 text=f"{get_size(file.file_size)} | {formate_file_name(file.file_name)}",
                 url=f"https://t.me/{temp.U_NAME}?start=file_{msg.chat.id}_{file.file_id}"
-            )] for file in files
-        ]
+            )
+        ])
 
-    # Update searching message if results are found
-    if files:
-        await searching_msg.edit(f"<b>Results found for your query: <code>{search}</code>. Preparing files...</b>")
-        await asyncio.sleep(2)
-    else:
-        await searching_msg.edit(f"<b>No results found for your query: <code>{search}</code>.</b>")
-        await asyncio.sleep(2)
-        await searching_msg.delete()
-        return
+    # Pagination Buttons
+    if total_pages > 1:
+        nav_btns = []
+        if current_page > 1:
+            nav_btns.append(InlineKeyboardButton("⪻ Previous", callback_data=f"prev_{search}_{start - max_btns}"))
+        if current_page < total_pages:
+            nav_btns.append(InlineKeyboardButton("Next ⪼", callback_data=f"next_{search}_{start + max_btns}"))
+        btn.append(nav_btns)
 
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
@@ -1034,21 +1031,21 @@ async def auto_filter(client, msg, spoll=False, pm_mode=False):
         try:
             await msg.reply_photo(
                 photo=imdb['poster'],
-                caption=cap[:1024] + links,
+                caption=cap,
                 parse_mode=enums.ParseMode.HTML,
                 reply_markup=InlineKeyboardMarkup(btn)
             )
         except Exception as e:
             print(f"Error sending poster: {e}")
             await msg.reply_text(
-                cap + links,
+                cap,
                 parse_mode=enums.ParseMode.HTML,
                 reply_markup=InlineKeyboardMarkup(btn),
                 disable_web_page_preview=True
             )
     else:
         await msg.reply_text(
-            cap + links,
+            cap,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode=enums.ParseMode.HTML
