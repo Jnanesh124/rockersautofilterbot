@@ -934,7 +934,7 @@ async def auto_filter(client, msg, spoll=False, pm_mode=False):
     st = ''
     try:
         # Instead of sending a sticker, now sending a text message
-        st = await msg.reply_text("<strong>Searching : <code>{search}</code></strong>")
+        st = await msg.reply_text(f"<strong>Searching : <code>{search}</code></strong>")
     except:
         pass
 
