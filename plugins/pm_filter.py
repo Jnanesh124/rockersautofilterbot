@@ -934,9 +934,9 @@ async def delSticker(sticker):
 async def auto_filter(client, msg, spoll=False, pm_mode=False):
     # Determine if msg is a Message or CallbackQuery
     if isinstance(msg, CallbackQuery):
-        search = msg.data  # For callback queries, use `msg.data`
+        search = msg.data  # For callback queries, use msg.data
     elif isinstance(msg, Message):
-        search = msg.text  # For normal messages, use `msg.text`
+        search = msg.text  # For normal messages, use msg.text
     else:
         return  # Exit if it's an unexpected type
 
@@ -948,53 +948,84 @@ async def auto_filter(client, msg, spoll=False, pm_mode=False):
         await msg.delete()  # Delete the user's invalid message
         return
 
-    # Immediately display "Searching..." message
-    st = await msg.reply_text(f"<strong>Searching: <code>{search}</code> 🔍</strong>")
-
-    # Run AI Spell Check & Get Search Results in Parallel
-    spell_task = asyncio.create_task(ai_spell_check(search))  # Start spell check task
-    search_task = asyncio.create_task(get_search_results(search))  # Start search results task
-
-    is_misspelled = await spell_task  # Wait for spell check to finish
-    files, offset, total_results = await search_task  # Wait for search results
-
-    # If AI suggests a correction, update query and retry search instantly
-    if not files and is_misspelled:
-        await st.edit(f'<b>AI Suggested: <code>{is_misspelled}</code>\nSearching for it...</b>')
-        search = is_misspelled
+    st = ''
+    try:
+        st = await msg.reply_text(f"<strong>Searching : <code>{search}</code></strong>")
+    except:
+        pass
+	    
+    if not spoll:
+        message = msg
+        search = message.text
+        chat_id = message.chat.id
+        settings = await get_settings(chat_id, pm_mode=pm_mode)
         files, offset, total_results = await get_search_results(search)
+        if not files:
+            if settings["spell_check"]:
+                await st.delete()  # Remove the previous "Searching" message
+                ai_sts = await msg.reply_text('<b>AI is Checking For Your Spelling. Please Wait.</b>')
+                is_misspelled = await ai_spell_check(search)
+                if is_misspelled:
+                    await ai_sts.edit(f'<b>AI Suggested <code>{is_misspelled}</code>\nSo I am Searching for <code>{is_misspelled}</code></b>')
+                    await asyncio.sleep(2)
+                    msg.text = is_misspelled
+                    await ai_sts.delete()
+                    return await auto_filter(client, msg)
+                await st.delete()
+                await ai_sts.delete()
+                return await advantage_spell_chok(msg)
+            return
+    else:
+        settings = await get_settings(msg.message.chat.id, pm_mode=pm_mode)
+        message = msg.message.reply_to_message  # msg will be callback query
+        search, files, offset, total_results = spoll
 
-    # If no results found, suggest alternative
-    if not files:
-        await st.delete()
-        return await advantage_spell_chok(msg)
+    req = message.from_user.id if message.from_user else 0
+    key = f"{message.chat.id}-{message.id}"
+    batch_ids = files
+    temp.FILES_ID[f"{message.chat.id}-{message.id}"] = batch_ids
+    batch_link = f"batchfiles#{message.chat.id}#{message.id}#{message.from_user.id}"
+    temp.CHAT[message.from_user.id] = message.chat.id
+    settings = await get_settings(message.chat.id, pm_mode=pm_mode)
+    links = ""
 
-    # Prepare buttons for results (no delays, instant batch processing)
-    btn = [[InlineKeyboardButton(f" {get_size(file.file_size)} | {formate_file_name(file.file_name)}",
-                                 url=f'https://telegram.dog/{temp.U_NAME}?start=file_{msg.chat.id}_{file.file_id}')]
-           for file in files]
+    if settings["link"]:
+        btn = []
+        for file_num, file in enumerate(files, start=1):
+            links += f"""<b>\n\n <a href=https://t.me/{temp.U_NAME}?start={"pm_mode_" if pm_mode else ''}file_{ADMINS[0] if pm_mode else message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {formate_file_name(file.file_name)} ({file_num})</a></b>"""
+    else:
+        btn = [[InlineKeyboardButton(text=f" {get_size(file.file_size)}| {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{message.chat.id}_{file.file_id}'),]
+               for file in files
+              ]
 
-    # Add pagination buttons if necessary
     if offset != "":
-        btn.append([InlineKeyboardButton("⪻ Prev", callback_data=f"prev_{msg.chat.id}_{offset}"),
-                    InlineKeyboardButton("Next ⪼", callback_data=f"next_{msg.chat.id}_{offset}")])
+        if total_results >= MAX_BTN:
+            btn.insert(0,[
+                InlineKeyboardButton("🎭 ᴄʜᴏᴏsᴇ ʟᴀɴɢᴜᴀɢᴇ ✨", callback_data=f"languages#{key}#{offset}#{req}"),
+                ])
+                             
+    if spoll:
+        m = await msg.message.edit(f"<b><code>{search}</code> ɪs ꜰᴏᴜɴᴅ ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ꜰᴏʀ ꜰɪʟᴇs 📫</b>")
+        await st.delete()
+        await asyncio.sleep(1.2)
+        await m.delete()
 
-    # Update the "Searching..." message to show results
-    await st.edit("<b>✅ Results Found!</b>", reply_markup=InlineKeyboardMarkup(btn))
-
-    # Handle large result set with multiple pages if necessary
-    if total_results > MAX_BTN:
-        BUTTONS[f"{msg.chat.id}-{msg.id}"] = search
-        req = msg.from_user.id if msg.from_user else 0
+    if offset != "":
+        BUTTONS[key] = search
+        req = message.from_user.id if message.from_user else 0
         btn.append(
             [InlineKeyboardButton(text=f"1/{math.ceil(int(total_results) / int(MAX_BTN))}", callback_data="pages"),
-             InlineKeyboardButton(text="ɴᴇxᴛ ⪼", callback_data=f"next_{req}_{search}")]
+             InlineKeyboardButton(text="ɴᴇxᴛ ⪼", callback_data=f"next_{req}_{key}_{offset}")]
         )
-
-    # Optionally, fetch and display IMDB poster (if enabled in settings)
+        key = f"{message.chat.id}-{message.id}"
+        BUTTONS[key] = search
+        req = message.from_user.id if message.from_user else 0
+        try:
+            offset = int(offset) 
+        except:
+            offset = int(MAX_BTN)
+        
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
-
-    # Apply the template from settings
     TEMPLATE = settings['template']
     if imdb:
         cap = TEMPLATE.format(
