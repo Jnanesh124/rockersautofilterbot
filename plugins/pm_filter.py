@@ -932,7 +932,13 @@ async def delSticker(sticker):
     except:
         pass
 async def auto_filter(client, msg, spoll=False, pm_mode=False):
-    search = msg.text  # Capturing the search query from the user
+    # Determine if msg is a Message or CallbackQuery
+    if isinstance(msg, CallbackQuery):
+        search = msg.data  # For callback queries, use `msg.data`
+    elif isinstance(msg, Message):
+        search = msg.text  # For normal messages, use `msg.text`
+    else:
+        return  # Exit if it's an unexpected type
 
     # Check if the search contains a link, mention, hashtag, or emoji
     if re.search(r"(https?://\S+|@\S+|#\S+)", search) or re.search(EMOJI_PATTERN, search):
@@ -944,11 +950,10 @@ async def auto_filter(client, msg, spoll=False, pm_mode=False):
 
     st = ''
     try:
-        # Instead of sending a sticker, now sending a text message
         st = await msg.reply_text(f"<strong>Searching : <code>{search}</code></strong>")
     except:
         pass
-
+	    
     if not spoll:
         message = msg
         search = message.text
