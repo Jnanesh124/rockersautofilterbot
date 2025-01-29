@@ -19,23 +19,23 @@ BOT_TOKEN = environ.get('BOT_TOKEN', '732774vnOe8pj7a-Fzs7_4')
 
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6643562770').split()]
 USERNAME = environ.get('USERNAME', "https://telegram.me/ROCKERSBACKUP")
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002082139065'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002094808699'))
 MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', 'https://t.me/+RowdIa84tBg1MDI1')
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002449650319').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002159172109').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongoretryWrites=true&w=majority&appName=Cluster0")
 
 DATABASE_NAME = environ.get('DATABASE_NAME', "TELEGRAM_BOT_INFO")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
-LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1001557802343'))
+LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002094808699'))
 QR_CODE = environ.get('QR_CODE', 'https://graph.org/file/ccb9db43e6224928e.jpg')
 START_IMG = environ.get('START_IMG', 'https://te.legra.ph/file/bb2b64aab56b8224b0249.jpg')
-BIN_CHANNEL = int(environ.get('BIN_CHANNEL','-1001557802343'))
+BIN_CHANNEL = int(environ.get('BIN_CHANNEL','-1002094808699'))
 DELETE_CHANNELS = int(environ.get('DELETE_CHANNELS','-10002343'))
 URL = environ.get('URL', 'https://t.me/Rockers_File_To_Stream_Bot')
 STICKERS_IDS = ('CAACAgUAAxkBAAKEAAFnE3RBUufpyAy8JfI0tL4B4K1nWQACZQwAAgF92Vb1aYKCMvHKFTYE').split()
 FILE_AUTO_DEL_TIMER = int(environ.get('FILE_AUTO_DEL_TIMER', '80'))
 IS_VERIFY = is_enabled('IS_VERIFY', True)
-LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1001557802343'))
+LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002094808699'))
 TUTORIAL = environ.get("TUTORIAL", "https://youtu.be/IK3Dx221Gos?si=uBhDd6MOsORYgey2")
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://files.catbox.moe/tv9fg5.jpg")
 SHORTENER_API = environ.get("SHORTENER_API", "3daf41670bf9ee8030e786aed791f15ffb7eb104")
@@ -58,7 +58,7 @@ AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_chan
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1001816697837'))
 request_channel = environ.get('REQUEST_CHANNEL', '-1001557802343')
 REQUEST_CHANNEL = int(request_channel) if request_channel and id_pattern.search(request_channel) else None
-UPI_PAY_LOGS = int(environ.get('UPI_PAY_LOGS', '-1001557802343'))
+UPI_PAY_LOGS = int(environ.get('UPI_PAY_LOGS', '--1002094808699'))
 MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1001557802343'))
 
 AUTO_FILTER = is_enabled('AUTO_FILTER', True)
