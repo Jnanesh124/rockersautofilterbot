@@ -339,9 +339,9 @@ async def start(client:Client, message):
     settings = await get_settings(grp_id , pm_mode=pm_mode)
     CAPTION = settings['caption']
     f_caption = CAPTION.format(
-        file_name = formate_file_name(files.file_name),
-        file_size = get_size(files.file_size),
-        file_caption=files.caption
+        filename=formate_file_name(files.file_name),  # Uses 'filename' (correct)
+        file_size=get_size(files.file_size),  # Uses 'file_size' (mismatch)
+        file_caption=files.caption if hasattr(files, 'caption') else "No caption available"
     )
     btn = [[
         InlineKeyboardButton("✛ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ ✛", callback_data=f'stream#{file_id}')
