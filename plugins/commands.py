@@ -299,7 +299,7 @@ async def start(client:Client, message):
             settings = await get_settings(grp_id, pm_mode=pm_mode)
             CAPTION = settings['caption']
             f_caption = CAPTION.format(
-                file_name=formate_file_name(file.file_name),
+                filename=formate_file_name(file.file_name),
                 file_size=get_size(file.file_size),
                 file_caption=file.caption
             )
