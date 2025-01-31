@@ -105,10 +105,10 @@ User - {}"""
 """
 
     FILE_CAPTION = """📕 File Name: {filename}
-💾 Size: {filesize} 
+💾 Size: {file_size} 
 
-adult video https://t.me/+-uJZnBO06H8xZTY1
-new releasead movies https://t.me/+LboF2BceyP5hMDVl"""
+🔞 Adult Videos: [Click Here](https://t.me/+-uJZnBO06H8xZTY1)
+🎬 New Released Movies: [Click Here](https://t.me/+LboF2BceyP5hMDVl)"""
 
     RESTART_TXT = """<b>
 📅 Dᴀᴛᴇ : <code>{}</code>
